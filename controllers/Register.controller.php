@@ -10,6 +10,7 @@ if (isset($_POST['email']) && isset($_POST['senha'])) {
     exit;
   } else {
     $error_message = 'Este email já está cadastrado!';
+    echo $error_message;
   }
 }
 

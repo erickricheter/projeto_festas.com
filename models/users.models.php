@@ -14,7 +14,6 @@ function login($email, $password)
   if (isset($users[$email]) && $users[$email] === $password) {
     $_SESSION['email'] = $email;
     $_SESSION['logado'] = true;
-    print_r($email, $password);
     return true;
   }
   return false;
