@@ -1,13 +1,12 @@
 <?php
 session_start();
 require_once '../models/users.models.php';
-
+var_dump($_POST);
 if (isset($_POST['email']) && isset($_POST['senha'])) {
   $email = $_POST['email'];
   $senha = $_POST['senha'];
 
   if (login($email, $senha)) {
-    echo "Usuário logado com sucesso";
     header('Location: ../index.php');
     exit;
   } else {
