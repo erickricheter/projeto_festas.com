@@ -11,6 +11,9 @@
   <?php endif ?>
 
   <form method="post">
+    <div class="container">
+
+    </div>
     <div>
       <label for="email">Email:</label>
       <input type="email" name="email" required>
