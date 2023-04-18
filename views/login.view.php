@@ -6,14 +6,12 @@
 </head>
 
 <body>
-  <?php if (isset($error_message)) : ?>
-    <div><?php echo $error_message ?></div>
+  <?php
+  if (isset($error_message)) : ?>
+    <div><?php echo $error_message; ?></div>
   <?php endif ?>
 
-  <form method="post">
-    <div class="container">
-
-    </div>
+  <form method="post" action="../controllers/Login.controller.php">
     <div>
       <label for="email">Email:</label>
       <input type="email" name="email" required>
