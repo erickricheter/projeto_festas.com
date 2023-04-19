@@ -1,6 +1,143 @@
+:root {
+  --cor-primaria: #583f8d;
+  --cor-secundaria: #a9cce3;
+  --cor-terciaria: #f9e79f;
+  --cor-quaternaria: #fadbd8;
+}
 * {
   margin: 0;
   padding: 0;
   font-family: "Times New Roman", Times, serif;
   box-sizing: border-box;
+}
+.error-message {
+  border-radius: 5px;
+  font-size: 20px;
+  display: flex;
+  background-color: #f8bbc0;
+  border: 1px solid #eea9b0;
+  color: #721c24;
+  padding: 10px;
+  position: absolute;
+  top: -50px;
+  left: 90px;
+}
+nav a {
+  color: #fff;
+  text-decoration: none;
+}
+
+nav a:hover {
+  opacity: 0.7;
+}
+
+nav i {
+  color: #fff;
+  font-size: 20px;
+  letter-spacing: 3px;
+  margin-left: 32px;
+  padding: 0;
+  margin-right: 6px;
+}
+
+.logo {
+  font-size: 24px;
+  text-transform: uppercase;
+  letter-spacing: 14px;
+}
+
+nav {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-family: "Times New Roman", Times, serif;
+  background-color: #310e6893;
+  background-image: linear-gradient(316deg, #310e68 0%, #5f0f40 74%);
+  height: 8vh;
+}
+
+.nav-list {
+  list-style: none;
+  display: flex;
+}
+
+.nav-list li {
+  letter-spacing: 3px;
+  margin-left: 32px;
+}
+
+.container {
+  width: 100%;
+  height: 100vh;
+  background-color: #310e68;
+  background-image: linear-gradient(316deg, #310e68 0%, #5f0f40 74%);
+}
+
+.form-box {
+  width: 90%;
+  max-width: 450px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #fff;
+  border-radius: 10px;
+  padding: 50px 60px 70px;
+  text-align: center;
+}
+
+.form-box h1 {
+  font-size: 30px;
+  margin-bottom: 60px;
+  color: #000000;
+  position: relative;
+}
+
+.input-field {
+  background: #eaeaea;
+  margin: 15px 0;
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+}
+
+input {
+  width: 100%;
+  background: transparent;
+  border: 0;
+  outline: 0;
+  padding: 18px 15px;
+}
+.input-field i {
+  margin: 0 15px;
+}
+
+form p {
+  text-align: left;
+  font-size: 15px;
+}
+
+form p a {
+  text-decoration: none;
+  color: #3c00a0;
+}
+
+.btn-register {
+  width: 100%;
+  background-color: #3e187a;
+  background-image: linear-gradient(316deg, #3e187a 0%, #994ecc 74%);
+  color: #fff;
+  height: 40px;
+  border-radius: 20px;
+  border: 0;
+  outline: 0;
+  cursor: pointer;
+  align-items: center;
+  margin-top: 15px;
+  font-size: 18px;
+}
+
+button:hover {
+  background: #3d00a0c9;
+  transition: background-color 1s ease-in-out;
 }
