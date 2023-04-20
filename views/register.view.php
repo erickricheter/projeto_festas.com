@@ -16,7 +16,7 @@
   <?php endif ?>
   <header>
     <nav>
-      <a href="../index.php" class="logo">LOGO TESTE</a>
+      <a href="../index.php"><img src="https://i.imgur.com/ijNyFsn.png" alt="festas.com logo" width="230" height="60"></a>
       <ul class="nav-list">
         <li>
           <i class="fa-solid fa-arrow-right-to-bracket"></i>

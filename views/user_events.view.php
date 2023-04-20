@@ -25,7 +25,7 @@ if (!isset($_SESSION['logado']) || $_SESSION['logado'] !== true) {
   <?php endif ?>
   <header>
     <nav>
-      <a href="../index.php" class="logo">LOGO TESTE</a>
+      <a href="../index.php"><img src="https://i.imgur.com/ijNyFsn.png" alt="festas.com logo" width="230" height="60"></a>
       <ul class="nav-list">
         <?php if (!isset($_SESSION['user_id'])) : ?>
           <li>
