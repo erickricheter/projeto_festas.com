@@ -96,10 +96,7 @@ $user_logged_in = isset($_SESSION['logado']);
           </div>
         </div>
         <?php
-        var_dump($event);
         if (is_array($event)) {
-          foreach ($event as $evento) {
-            if (is_array($evento)) {
               echo '<div class="event">';
               echo '<img src="https://images.pexels.com/photos/1190297/pexels-photo-1190297.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Imagem de nosso evento!" srcset="">';
               echo '<div class="event-infos">';
@@ -110,8 +107,7 @@ $user_logged_in = isset($_SESSION['logado']);
               echo '</div>';
               echo '</div>';
             }
-          }
-        } else {
+        else {
           echo "Erro: Não foi possível exibir os eventos.";
         }
         ?>

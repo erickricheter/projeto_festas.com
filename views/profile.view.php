@@ -54,7 +54,30 @@ $user_logged_in = isset($_SESSION['logado']);
     </nav>
   </header>
   <main class="container">
-
+  <div class="profile">
+      <form action="">
+        <div class="input-field">
+          <label for="imagem">Foto de Perfil:</label>
+          <input type="file" name="imagem" required>
+        </div>
+        <div class="input-field">
+          <label for="nome">Nome:</label>
+          <input type="text" name="nome" required>
+        </div>
+        <div class="input-field">
+          <label for="sobrenome">Sobrenome:</label>
+          <input type="text" name="sobrenome" required>
+        </div>
+        <div class="input-field">
+          <label for="cpf">CPF:</label>
+          <input type="text" name="cpf" required>
+        </div>
+        <div class="input-field">
+          <label for="email">E-mail:</label>
+          <input type="email" name="email" required>
+        </div>
+      </form>
+    </div>        
   </main>
 </body>
 
