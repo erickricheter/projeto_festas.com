@@ -27,7 +27,7 @@ $user_logged_in = isset($_SESSION['logado']);
 
   <header>
     <nav>
-      <a href="../index.php"><img src="https://i.imgur.com/ijNyFsn.png" alt="festas.com logo" width="215" height="50"></a>
+      <a href="#"><img src="https://i.imgur.com/ijNyFsn.png" alt="festas.com logo" width="215" height="50"></a>
       <ul class="nav-list">
         <?php if (!$user_logged_in) : ?>
           <li>
