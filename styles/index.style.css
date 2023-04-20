@@ -33,6 +33,7 @@ h4 {
 }
 
 .event {
+  width: 50%;
   overflow: hidden;
   background: #ffffff;
   color: #21201e;

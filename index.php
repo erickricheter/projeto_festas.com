@@ -27,7 +27,7 @@ $user_logged_in = isset($_SESSION['logado']);
 
   <header>
     <nav>
-      <a href="../index.php"><img src="https://i.imgur.com/ijNyFsn.png" alt="festas.com logo" width="230" height="60"></a>
+      <a href="../index.php"><img src="https://i.imgur.com/ijNyFsn.png" alt="festas.com logo" width="215" height="50"></a>
       <ul class="nav-list">
         <?php if (!$user_logged_in) : ?>
           <li>
@@ -96,18 +96,20 @@ $user_logged_in = isset($_SESSION['logado']);
           </div>
         </div>
         <?php
-        if (is_array($event)) {
-          echo '<div class="event">';
-          echo '<img src="https://images.pexels.com/photos/1190297/pexels-photo-1190297.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Imagem de nosso evento!" srcset="">';
-          echo '<div class="event-infos">';
-          echo '<h4 class="event-title">' . $event['evento'] . '</h4>';
-          echo '<p class="event-date">Data e horário do evento: ' . $event['data'] . $event['horario'] . '</p>';
-          echo '<br>';
-          echo '<p class="event-description">' . $event['descricao'] . '</p>';
-          echo '</div>';
-          echo '</div>';
-        } else {
-          echo "Erro: Não foi possível exibir os eventos.";
+        if ($event) {
+          if (is_array($event)) {
+            echo '<div class="event">';
+            echo '<img src="https://images.pexels.com/photos/1190297/pexels-photo-1190297.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Imagem de nosso evento!" srcset="">';
+            echo '<div class="event-infos">';
+            echo '<h4 class="event-title">' . $event['evento'] . '</h4>';
+            echo '<p class="event-date">Data e horário do evento: ' . $event['data'] . $event['horario'] . '</p>';
+            echo '<br>';
+            echo '<p class="event-description">' . $event['descricao'] . '</p>';
+            echo '</div>';
+            echo '</div>';
+          } else {
+            echo "Erro: Não foi possível exibir os eventos.";
+          }
         }
         ?>
       </div>
