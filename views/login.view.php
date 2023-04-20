@@ -4,8 +4,7 @@ $error_message = isset($_SESSION['error_message']) ? $_SESSION['error_message'] 
 unset($_SESSION['error_message']);
 
 // Verifica se o usuário está logado ou não
-$user_logged_in = isset($_SESSION['user_id']);
-print_r($user_logged_in);
+$user_logged_in = isset($_SESSION['logado']);
 ?>
 <!DOCTYPE html>
 <html>
@@ -25,18 +24,17 @@ print_r($user_logged_in);
 
   <header>
     <nav>
-      <a href="../index.php" class="logo">LOGO TESTE</a>
+      <a href="#" class="logo">LOGO TESTE</a>
       <ul class="nav-list">
-        <?php if (!isset($_SESSION['user_id'])) : ?>
+        <?php if (!$user_logged_in) : ?>
           <li>
             <i class="fa-solid fa-arrow-right-to-bracket"></i>
             <a href="login.view.php">Login / Cadastro</a>
           </li>
-        <?php endif; ?>
-        <?php if (isset($_SESSION['user_id'])) : ?>
+        <?php else : ?>
           <li>
             <i class="fa-solid fa-arrow-right-to-bracket"></i>
-            <a href="logout.php">Logout</a>
+            <a href="../controllers/Logout.controller.php">Logout</a>
           </li>
           <li>
             <a href="new.event.view.php">

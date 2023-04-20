@@ -36,7 +36,7 @@ if (!isset($_SESSION['logado']) || $_SESSION['logado'] !== true) {
         <?php if (isset($_SESSION['user_id'])) : ?>
           <li>
             <i class="fa-solid fa-arrow-right-to-bracket"></i>
-            <a href="logout.php">Logout</a>
+            <a href="controllers/Logout.controller.php">Logout</a>
           </li>
           <li>
             <a href="new.event.view.php">

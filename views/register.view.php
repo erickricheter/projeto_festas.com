@@ -24,7 +24,7 @@
         </li>
         <li>
           <i class="fa-solid fa-arrow-right-to-bracket"></i>
-          <a href="">Logout</a>
+          <a href="controllers/Logout.controller.php">Logout</a>
         </li>
         <li><a href="">
             <i class="fa-regular fa-calendar"></i><a href="new.event.view.php">Cadastrar evento</a></li>

@@ -1,5 +1,7 @@
 <?php
 session_start();
+require 'controllers/Event.controller.php';
+$event = isset($_GET['event']) ? json_decode(urldecode($_GET['event']), true) : null;
 $error_message = isset($_SESSION['error_message']) ? $_SESSION['error_message'] : '';
 unset($_SESSION['error_message']);
 
@@ -17,10 +19,11 @@ $user_logged_in = isset($_SESSION['logado']);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/index.style.css">
     <script src="https://kit.fontawesome.com/29b8768e85.js" crossorigin="anonymous"></script>
   </head>
 
-<body>
+<body class="index-body">
 
   <header>
     <nav>
@@ -34,7 +37,7 @@ $user_logged_in = isset($_SESSION['logado']);
         <?php else : ?>
           <li>
             <i class="fa-solid fa-arrow-right-to-bracket"></i>
-            <a href="logout.php">Logout</a>
+            <a href="controllers/Logout.controller.php">Logout</a>
           </li>
           <li>
             <a href="views/new.event.view.php">
@@ -51,32 +54,69 @@ $user_logged_in = isset($_SESSION['logado']);
     </nav>
   </header>
 
-  <main class="container">
-    <div class="form-box">
-      <?php if (!empty($error_message)) : ?>
-        <div class="error-message">
-          <p><?php echo $error_message; ?></p>
-        </div>
-      <?php endif; ?>
-      <h1>Login</h1>
-      <form method="post" action="../controllers/Login.controller.php">
-        <div class="input-group">
-          <div class="input-field">
-            <i class="fa-solid fa-chalkboard-user"></i>
-            <label for="email">Email:</label>
-            <input type="email" name="email" required placeholder="Seu Email">
-          </div>
-          <div class="input-field">
-            <i class="fa-solid fa-lock"></i>
-            <label for="senha">Senha:</label>
-            <input type="password" name="senha" required placeholder="Digite sua senha">
-          </div>
-          <p>Não tem uma conta? <a href="../views/register.view.php">Cadastre-se!</a></p>
-        </div>
+  <main>
+    <section class="events">
+      <h1>Conheça nossos eventos!</h1>
+      <div class="all-events">
+        <div class="event">
+          <img src="https://images.pexels.com/photos/1190297/pexels-photo-1190297.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Imagem de nosso evento!" srcset="">
+          <div class="event-infos">
+            <h4 class="event-title">
+              Teste nome evento
+            </h4>
+            <p class="event-date">Data e horário do evento: 12/04/2023 12:05</p>
+            <br>
+            <p class="event-description">Teste descrição do evento descrição do evento descrição do evento descrição do evento </p>
 
-        <button type="submit" class="btn-register">Entrar</button>
-      </form>
-    </div>
+          </div>
+        </div>
+        <div class="event">
+          <img src="https://images.pexels.com/photos/1190297/pexels-photo-1190297.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Imagem de nosso evento!" srcset="">
+          <div class="event-infos">
+            <h4 class="event-title">
+              Teste nome evento 2
+            </h4>
+            <p class="event-date">Data do evento: 12/04/2023</p>
+            <p class="event-hour">Horário: 12:05</p>
+            <br>
+            <p class="event-description">Teste descrição do evento descrição do evento descrição do evento descrição do evento</p>
+          </div>
+        </div>
+        <div class="event">
+          <img src="https://images.pexels.com/photos/1190297/pexels-photo-1190297.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Imagem de nosso evento!" srcset="">
+          <div class="event-infos">
+            <h4 class="event-title">
+              Teste nome evento 2
+            </h4>
+            <p class="event-date">Data do evento: 12/04/2023</p>
+            <p class="event-hour">Horário: 12:05</p>
+            <br>
+            <p class="event-description">Teste descrição do evento descrição do evento descrição do evento descrição do evento</p>
+
+          </div>
+        </div>
+        <?php
+        var_dump($event);
+        if (is_array($event)) {
+          foreach ($event as $evento) {
+            if (is_array($evento)) {
+              echo '<div class="event">';
+              echo '<img src="https://images.pexels.com/photos/1190297/pexels-photo-1190297.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Imagem de nosso evento!" srcset="">';
+              echo '<div class="event-infos">';
+              echo '<h4 class="event-title">' . $event['evento'] . '</h4>';
+              echo '<p class="event-date">Data e horário do evento: ' . $event['data'] . $event['horario'] . '</p>';
+              echo '<br>';
+              echo '<p class="event-description">' . $event['descricao'] . '</p>';
+              echo '</div>';
+              echo '</div>';
+            }
+          }
+        } else {
+          echo "Erro: Não foi possível exibir os eventos.";
+        }
+        ?>
+      </div>
+    </section>
   </main>
 </body>
 
