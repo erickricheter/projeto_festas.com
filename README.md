@@ -25,3 +25,5 @@ Projeto em PHP de um sistema de cadastro de eventos, onde os usuário podem cada
 - Adição do perfil ao projeto;
 - Revisão dos controllers;
 - Revisão do novo evento no index.
+
+## Atividades exercidas pelos participantes do projeto na entrega 02
