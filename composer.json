@@ -1,0 +1,17 @@
+{
+    "name": "utfpr/projeto_festas.com",
+    "autoload": {
+        "psr-4": {
+            "Utfpr\\ProjetoFestasCom\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "salache",
+            "email": "lfsalache@gmail.com"
+        }
+    ],
+    "require": {
+        "pecee/simple-router": "5.3.0.5"
+    }
+}

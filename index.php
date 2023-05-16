@@ -1,12 +1,19 @@
 <?php
+use Pecee\SimpleRouter\SimpleRouter;
 session_start();
 require 'controllers/Event.controller.php';
+require 'vendor/autoload.php';
+require_once 'routes.php';
 $event = isset($_GET['event']) ? json_decode(urldecode($_GET['event']), true) : null;
 $error_message = isset($_SESSION['error_message']) ? $_SESSION['error_message'] : '';
 unset($_SESSION['error_message']);
 
 // Verifica se o usuário está logado ou não
 $user_logged_in = isset($_SESSION['logado']);
+SimpleRouter::get('/teste', function(){
+  echo'<h1>teste<h1>';
+});
+SimpleRouter::start();
 ?>
 <!DOCTYPE html>
 <html>
