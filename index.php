@@ -1,6 +1,7 @@
 <?php
 session_start();
 require 'controllers/Event.controller.php';
+require 'vendor/autoload.php';
 $event = isset($_GET['event']) ? json_decode(urldecode($_GET['event']), true) : null;
 $error_message = isset($_SESSION['error_message']) ? $_SESSION['error_message'] : '';
 unset($_SESSION['error_message']);

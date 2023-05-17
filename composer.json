@@ -1,0 +1,12 @@
+{
+    "name": "utfpr/projeto_festas.com",
+    "authors": [
+        {
+            "name": "salache",
+            "email": "lfsalache@gmail.com"
+        }
+    ],
+    "autoload": {
+        "classmap": ["./"]
+    }
+}
