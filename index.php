@@ -2,12 +2,16 @@
 session_start();
 require 'controllers/Event.controller.php';
 require 'vendor/autoload.php';
+use CoffeeCode\Router\Router;
+$router = new Router("http://localhost/projeto_festas.com");
 $event = isset($_GET['event']) ? json_decode(urldecode($_GET['event']), true) : null;
 $error_message = isset($_SESSION['error_message']) ? $_SESSION['error_message'] : '';
 unset($_SESSION['error_message']);
 
 // Verifica se o usuário está logado ou não
 $user_logged_in = isset($_SESSION['logado']);
+$router->get("/login", "Redirect:telaLogin");
+$router->dispatch();
 ?>
 <?php include 'views/header.view.php'; ?>
 <main>

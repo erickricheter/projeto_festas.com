@@ -8,5 +8,10 @@
     ],
     "autoload": {
         "classmap": ["./"]
+    },
+    "require": {
+        "coffeecode/router": "^2.0",
+        "guzzlehttp/guzzle": "^7.6",
+        "pecee/simple-router": "5.3.0.5"
     }
 }
