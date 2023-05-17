@@ -1,36 +1,55 @@
 <?php
 session_start();
 
-// Array com usuários cadastrados
-$users = array(
-  'admin@gmail.com' => '123456',
-  'joao@gmail.com' => 'senha123',
-  'maria@gmail.com' => 'qwerty',
-);
-
-function login($email, $password)
+class User
 {
-  global $users;
-  if (isset($users[$email]) && $users[$email] === $password) {
-    $_SESSION['email'] = $email;
-    $_SESSION['logado'] = true;
+  private $users;
+
+  public function __construct()
+  {
+    $this->users = array(
+      'admin@gmail.com' => '123456',
+      'joao@gmail.com' => 'senha123',
+      'maria@gmail.com' => 'qwerty',
+    );
+  }
+
+  public function login($email, $password)
+  {
+    if (isset($this->users[$email]) && $this->users[$email] === $password) {
+      $_SESSION['email'] = $email;
+      $_SESSION['logado'] = true;
+      return true;
+    }
+    return false;
+  }
+
+  public function cadastrar($email, $password)
+  {
+    if (isset($this->users[$email])) {
+      return false;
+    }
+
+    $this->users[$email] = $password;
+    $_SESSION['users'] = $this->users;
     return true;
   }
-  return false;
+}
+
+$user = new User();
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+  if (isset($_POST['email']) && isset($_POST['senha'])) {
+    $email = $_POST['email'];
+    $senha = $_POST['senha'];
+
+    $user->login($email, $senha);
+  } else if (isset($_POST['register_email']) && isset($_POST['register_senha'])) {
+    $email = $_POST['register_email'];
+    $senha = $_POST['register_senha'];
+
+    $user->cadastrar($email, $senha);
+  }
 }
 
 require_once '../models/users.models.php';
-function cadastrar($email, $password)
-{
-  global $users;
-
-  //caso já tenha um usuário com o email cadastrado o sistema retorna o erro
-  if (isset($users[$email])) {
-    return false;
-  }
-  //Caso não exista o sistema adiciona o e-mail ao novo usuário
-  $users[$email] = $password;
-  //Atualiza o array global com o novo usuário cadastrado
-  $_SESSION['users'] = $users;
-  return true;
-}

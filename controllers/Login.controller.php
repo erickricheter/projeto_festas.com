@@ -6,7 +6,8 @@ class AuthController
 {
   public function login($email, $senha)
   {
-    if (login($email, $senha)) {
+    $userModel = new User();
+    if ($userModel->login($email, $senha)) {
       header('Location: ../index.php');
       exit;
     } else {

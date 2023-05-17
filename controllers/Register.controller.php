@@ -6,7 +6,8 @@ class UserController
 {
   public function cadastrarUsuario($email, $senha)
   {
-    if (cadastrar($email, $senha)) {
+    $userModel = new User();
+    if ($userModel->cadastrar($email, $senha)) {
       header('Location: ../views/login.view.php');
       exit;
     } else {
