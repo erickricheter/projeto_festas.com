@@ -1,4 +1,14 @@
-<?php include 'views/header.view.php'; ?>
+<?php include 'views/header.view.php';
+if (isset($_SESSION['success_message'])) {
+  $successMessage = $_SESSION['success_message'];
+  unset($_SESSION['success_message']);
+}
+if (isset($_SESSION['error_message'])) {
+  $errorMessage = $_SESSION['error_message'];
+  unset($_SESSION['error_message']);
+}
+
+?>
 <main>
   <section class="events">
     <h1>Conheça nossos eventos!</h1>
@@ -24,15 +34,15 @@
           echo '<p class="event-date">Data e horário do evento: ' . $event['data'] . ' ' . $event['horario'] . '</p>';
           echo '<br>';
           echo '<p class="event-description">' . $event['descricao'] . '</p>';
-          echo '<form method="POST" action="models/excluir-evento.php" class="delete-form">';
-          echo '<input type="hidden" name="event_id" value="' . $event['id'] . '">';
-          echo '<button type="submit" class="delete-button" data-id="' . $event['id'] . '">Deletar</button>';
-          echo '</form>';
+          if ($user_logged_in) :
+            echo '<form method="POST" action="models/excluir-evento.php" class="delete-form">';
+            echo '<input type="hidden" name="event_id" value="' . $event['id'] . '">';
+            echo '<button type="submit" class="delete-button" data-id="' . $event['id'] . '">Deletar</button>';
+            echo '</form>';
+          endif;
           echo '</div>';
           echo '</div>';
         }
-      } else {
-        echo "Erro: Não foi possível exibir os eventos.";
       }
       ?>
     </div>

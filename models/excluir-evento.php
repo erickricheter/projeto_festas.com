@@ -5,11 +5,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $event_id = $_POST['event_id'];
 
   if ($eventController->deleteEvent($event_id)) {
-    // Redirecionar para a página de eventos ou exibir uma mensagem de sucesso
+    session_start();
+    $_SESSION['success_message'] = 'Evento excluído com sucesso!';
     header('Location: ../index.php');
     exit();
   } else {
-    // Redirecionar para a página de eventos ou exibir uma mensagem de erro
+    session_start();
+    $_SESSION['error_message'] = 'Erro ao excluir evento selecionado!';
     header('Location: ../index.php');
     exit();
   }

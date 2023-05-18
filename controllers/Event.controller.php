@@ -35,7 +35,6 @@ class EventController
         try {
             $sql = 'INSERT INTO evento (evento, descricao, local, data, horario) VALUES (:evento, :descricao, :local, :data, :horario)';
             $stmt = $this->pdo->prepare($sql);
-
             $stmt->execute([
                 'evento' => $evento,
                 'descricao' => $descricao,
@@ -70,7 +69,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['event_id'])) {
         $event_id = $_POST['event_id'];
         $eventController = new EventController();
-
         if ($eventController->deleteEvent($event_id)) {
             header('Location: ../index.php');
             exit();

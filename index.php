@@ -24,4 +24,5 @@ if (array_key_exists($path, $routes)) {
   exit;
 } else {
   require_once 'views/home.view.php';
+  exit;
 }
