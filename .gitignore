@@ -26,7 +26,6 @@ composer.lock
 /migrations/
 /phinx.yml
 /phinx.yaml
-/phinx.php
 /phinx.json
 
 # python artifacts

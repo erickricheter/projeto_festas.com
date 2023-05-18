@@ -11,10 +11,10 @@ $eventController = new EventController();
 $events = $eventController->getEventsFromDatabase();
 
 $routes = [
-  '/projeto_festas.com/login' => 'login.view',
-  '/projeto_festas.com/eventos' => 'user_events.view',
-  '/projeto_festas.com/perfil' => 'profile.view',
-  '/projeto_festas.com/cadastrar' => 'register.view'
+  '/festas.com/login' => 'login.view',
+  '/festas.com/eventos' => 'user_events.view',
+  '/festas.com/perfil' => 'profile.view',
+  '/festas.com/cadastrar' => 'register.view'
 ];
 
 $path = $_SERVER['REQUEST_URI'];

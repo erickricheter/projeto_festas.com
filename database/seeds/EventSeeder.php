@@ -16,7 +16,6 @@ class EventSeeder extends AbstractSeed
                 'imagem' => 'nome_da_imagem.jpg'
             ]
         ];
-
         $table = $this->table('evento');
         $table->insert($data)->save();
     }

@@ -27,3 +27,23 @@ Projeto em PHP de um sistema de cadastro de eventos, onde os usuário podem cada
 - Revisão do novo evento no index.
 
 ## Atividades exercidas pelos participantes do projeto na entrega 02
+
+1. Erick Eduardo Richeter
+
+- Padronização OOP do projeto;
+- Criação do sistema de Banco de dados + eventos + Phinx
+
+2. Luiz Felipe Salache De Souza
+
+- Alterações na estrutura do index
+- Testes do Composer
+- Rotas iniciais do projeto
+
+### Getting Started
+
+- Adicionar as dependencias do projeto com composer install
+- Inicar o MySql via xampp e abrir a página localhost/phpmyadmin
+- Criar a data base de nome: "development_db"
+- Na página do projeto rodar o seguinte comando: vendor/bin/phinx migrate
+- Abrir outra aba do navegador com localhost
+- Rodar o projeto
