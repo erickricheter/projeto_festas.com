@@ -24,6 +24,10 @@
           echo '<p class="event-date">Data e horário do evento: ' . $event['data'] . ' ' . $event['horario'] . '</p>';
           echo '<br>';
           echo '<p class="event-description">' . $event['descricao'] . '</p>';
+          echo '<form method="POST" action="models/excluir-evento.php" class="delete-form">';
+          echo '<input type="hidden" name="event_id" value="' . $event['id'] . '">';
+          echo '<button type="submit" class="delete-button" data-id="' . $event['id'] . '">Deletar</button>';
+          echo '</form>';
           echo '</div>';
           echo '</div>';
         }
