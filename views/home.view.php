@@ -1,32 +1,3 @@
-<?php
-session_start();
-require 'controllers/Event.controller.php';
-$error_message = isset($_SESSION['error_message']) ? $_SESSION['error_message'] : '';
-unset($_SESSION['error_message']);
-
-// Verifica se o usuário está logado ou não
-$user_logged_in = isset($_SESSION['logado']);
-
-$eventController = new EventController();
-$events = $eventController->getEventsFromDatabase();
-
-$routes = [
-  '/projeto_festas.com/login' => 'login.view',
-  '/projeto_festas.com/eventos' => 'user_events.view',
-  '/projeto_festas.com/perfil' => 'profile.view',
-  '/projeto_festas.com/cadastrar' => 'register.view'
-];
-
-$path = $_SERVER['REQUEST_URI'];
-if (array_key_exists($path, $routes)) {
-  $route = $routes[$path];
-  require_once 'views/' . $route . '.php';
-  exit;
-} else {
-  require_once 'views/home.view.php';
-}
-
-?>
 <?php include 'views/header.view.php'; ?>
 <main>
   <section class="events">
@@ -53,10 +24,6 @@ if (array_key_exists($path, $routes)) {
           echo '<p class="event-date">Data e horário do evento: ' . $event['data'] . ' ' . $event['horario'] . '</p>';
           echo '<br>';
           echo '<p class="event-description">' . $event['descricao'] . '</p>';
-          echo '<form method="POST" action="models/excluir-evento.php" class="delete-form">';
-          echo '<input type="hidden" name="event_id" value="' . $event['id'] . '">';
-          echo '<button type="submit" class="delete-button" data-id="' . $event['id'] . '">Deletar</button>';
-          echo '</form>';
           echo '</div>';
           echo '</div>';
         }
