@@ -14,7 +14,19 @@ class EventController
         $this->pdo = new PDO($dsn, $username, $password);
         $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     }
-
+    public function deleteEvent($event_id)
+    {
+        try {
+            $sql = 'DELETE FROM evento WHERE id = :id';
+            $stmt = $this->pdo->prepare($sql);
+            $stmt->execute(['id' => $event_id]);
+            return true;
+        } catch (PDOException $e) {
+            // Tratar erro consulta SQL
+            echo 'Erro ao excluir o evento: ' . $e->getMessage();
+            return false;
+        }
+    }
     public function saveEvent($evento, $descricao, $local, $data, $horario)
     {
         try {
@@ -48,25 +60,5 @@ class EventController
             echo 'Erro ao recuperar os eventos: ' . $e->getMessage();
             return [];
         }
-    }
-}
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $evento = $_POST['evento'];
-    $descricao = $_POST['descricao'];
-    $local = $_POST['local'];
-    $data = $_POST['data'];
-    $horario = $_POST['horario'];
-
-    // Instanciar o controlador de eventos
-    $eventController = new EventController();
-
-    // Salvar o evento no banco de dados
-    if ($eventController->saveEvent($evento, $descricao, $local, $data, $horario)) {
-        // Redirecionar ou exibir uma mensagem de sucesso, conforme necessário
-        header('Location: ../index.php');
-        exit();
-    } else {
-        // O erro já foi tratado dentro do método saveEvent REMOVER
     }
 }
