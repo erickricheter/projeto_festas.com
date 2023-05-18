@@ -6,6 +6,7 @@ require_once __DIR__ . '/../phinx.php';
 class EventController
 {
     private $pdo;
+
     public function __construct()
     {
         $dsn = 'mysql:host=localhost;dbname=development_db';
@@ -14,6 +15,7 @@ class EventController
         $this->pdo = new PDO($dsn, $username, $password);
         $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     }
+
     public function deleteEvent($event_id)
     {
         try {
@@ -27,14 +29,13 @@ class EventController
             return false;
         }
     }
+
     public function saveEvent($evento, $descricao, $local, $data, $horario)
     {
         try {
-            // inserir os dados SQL
             $sql = 'INSERT INTO evento (evento, descricao, local, data, horario) VALUES (:evento, :descricao, :local, :data, :horario)';
             $stmt = $this->pdo->prepare($sql);
 
-            // consulta com os valores do formulário
             $stmt->execute([
                 'evento' => $evento,
                 'descricao' => $descricao,
@@ -42,6 +43,7 @@ class EventController
                 'data' => $data,
                 'horario' => $horario
             ]);
+
             return true;
         } catch (PDOException $e) {
             // Tratar erro consulta SQL
@@ -49,6 +51,7 @@ class EventController
             return false;
         }
     }
+
     public function getEventsFromDatabase()
     {
         try {
@@ -59,6 +62,36 @@ class EventController
             // Tratar erro consulta SQL
             echo 'Erro ao recuperar os eventos: ' . $e->getMessage();
             return [];
+        }
+    }
+}
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (isset($_POST['event_id'])) {
+        $event_id = $_POST['event_id'];
+        $eventController = new EventController();
+
+        if ($eventController->deleteEvent($event_id)) {
+            header('Location: ../index.php');
+            exit();
+        } else {
+            header('Location: ../index.php');
+            exit();
+        }
+    } else {
+        $evento = $_POST['evento'];
+        $descricao = $_POST['descricao'];
+        $local = $_POST['local'];
+        $data = $_POST['data'];
+        $horario = $_POST['horario'];
+        $eventController = new EventController();
+
+        if ($eventController->saveEvent($evento, $descricao, $local, $data, $horario)) {
+            header('Location: ../index.php');
+            exit();
+        } else {
+            header('Location: ../index.php');
+            exit();
         }
     }
 }
