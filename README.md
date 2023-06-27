@@ -15,7 +15,7 @@ Projeto em PHP de um sistema de cadastro de eventos, onde os usuário podem cada
 
 1. Erick Eduardo Richeter
 
-- Criação das páginas de view;
+-- Criação das páginas de view;
 - Criação dos controllers de cadastro do sistema e integração com o models para funcionamento dos mesmo;
 - Stylização principal do projeto;
 
